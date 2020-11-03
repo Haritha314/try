@@ -1,5 +1,5 @@
 node {
-    def app
+    def Dockerfile
 
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
@@ -10,12 +10,12 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("haritha1541/nodeapp")
+        Dockerfile = docker.build("haritha1541/nodeapp")
     }
 
     stage('Test image') {
         
-        app.inside {
+        Dockerfile.inside {
             echo "Tests passed"
         }
     }
@@ -25,8 +25,8 @@ node {
 			You would need to first register with DockerHub before you can push images to your account
 		*/
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            Dockerfile.push("${env.BUILD_NUMBER}")
+            Dockerfile.push("latest")
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
