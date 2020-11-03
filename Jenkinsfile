@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("haritha/nodeapp")
+        app = docker.build("haritha1541/nodeapp")
     }
 
     stage('Test image') {
