@@ -1,2 +1,2 @@
 FROM httpd:2.4
-COPY ./public-html/ /usr/local/apache2/htdocs/
+ADD https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img /usr/local/apache2/htdocs/
